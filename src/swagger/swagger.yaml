@@ -1,0 +1,181 @@
+openapi: 3.0.0
+info:
+  title: CRUD Api for mongodb
+  version: '1.0'
+  description: ''
+servers:
+  - url: 'http://localhost:3000'
+paths:
+  /databases:
+    get:
+      summary: Listing Databases
+      tags:
+        - database
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  type: string
+      operationId: get-dbs
+      description: ''
+    parameters: []
+  '/databases/{database}/collections':
+    parameters:
+      - schema:
+          type: string
+        name: database
+        in: path
+        required: true
+    get:
+      summary: Get all collections
+      tags:
+        - document
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties: {}
+      operationId: get-databases-database-collections
+  '/databases/{database}/collections/{collection}/{id}':
+    parameters:
+      - schema:
+          type: string
+        name: collection
+        in: path
+        required: true
+      - schema:
+          type: string
+        name: id
+        in: path
+        required: true
+      - schema:
+          type: string
+        name: database
+        in: path
+        required: true
+    get:
+      summary: Return document by id
+      tags:
+        - document
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  type: object
+      operationId: get-db-collection-id
+      description: ''
+    put:
+      summary: Replacing a document
+      operationId: put-db-collection-id
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties: {}
+      description: ''
+      tags:
+        - document
+    patch:
+      summary: Updating a document
+      operationId: patch-db-collection-id
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties: {}
+      description: ''
+      tags:
+        - document
+    delete:
+      summary: Deleting a document by id
+      operationId: delete-db-collection-id
+      responses:
+        '200':
+          description: OK
+      description: ''
+      tags:
+        - document
+  '/databases/{database}/bulk':
+    parameters:
+      - schema:
+          type: string
+        name: database
+        in: path
+        required: true
+    post:
+      summary: 'Bulk write (insert, update and delete)'
+      tags:
+        - collection
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties: {}
+      operationId: post-db-bulk
+  '/databases/{database}':
+    parameters:
+      - schema:
+          type: string
+        name: database
+        in: path
+        required: true
+    get:
+      summary: Get database description
+      tags:
+        - database
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties: {}
+      operationId: get-databases-database
+  '/databases/{database}/collections/{collection}':
+    parameters:
+      - schema:
+          type: string
+        name: database
+        in: path
+        required: true
+      - schema:
+          type: string
+        name: collection
+        in: path
+        required: true
+    get:
+      summary: Get collection detail
+      tags:
+        - collection
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties: {}
+      operationId: get-databases-database-collections-collection
+components:
+  schemas: {}
