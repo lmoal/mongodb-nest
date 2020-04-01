@@ -1,5 +1,5 @@
 import {Body, Controller, Delete, Get, Inject, Post} from '@nestjs/common';
-import {MongodbService} from "../mongodb/mongodb.service";
+import {MongodbService} from "../../dao/mongodb/mongodb.service";
 import {Database} from "./database.interface";
 
 @Controller('databases')
